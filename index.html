@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory card</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/fontawesome.min.js"></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div id="fullContainer">
+        <div id="containerHeader">
+            <h2>Memory Cards</h2>
+            <button id="addNewCardBtn">
+                <i class="fas fa-plus"></i>
+                Add New Card
+            </button>
+        </div>
+        <div id="cardContainer">
+            <div class="card">
+                <h4 class="flipCard"><i class="fas fa-redo-alt"></i> Flip</h4>
+                <div class="card-content">
+                    Add a card
+                </div>
+            </div>
+            <div id="cardNav">
+                <div>
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div>
+
+                    
+                </div>
+                <div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <button id="clearCardBtn"><i class="fas fa-trash"></i> Clear All Cards</button>
+        <div id="addCardModalContainer">
+            <div id="cardModal">
+                <div id="modalHeader">
+                    <h3>Add Card</h3>
+                    <div id="closeModal" class="close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div id="modalContent">
+                    <form id="addCardForm">
+                        <div class="form-box">
+                            <label for="questionId">Question</label>
+                            <input type="text" required class="inp-box" name="" id="questionId">
+
+                        </div>
+                        <div class="form-box">
+                            <label for="answerId">Answer</label>
+                            <input type="text" required class="inp-box" name="" id="answerId">
+
+                        </div>
+                        <div id="modalFooter">
+                            <button class="close">Cancel</button>
+                            <button type="submit" id="submitBtn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
