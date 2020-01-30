@@ -7,6 +7,7 @@ const addNewCardBtn = document.querySelector('#addNewCardBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const questionId = document.querySelector('#questionId');
 const answerId = document.querySelector('#answerId');
+const cardContainer = document.querySelector('#cardContainer');
 
 addNewCardBtn.addEventListener('click', function () {
 
@@ -22,21 +23,59 @@ closeModal.forEach(btn => {
 })
 
 addCardForm.addEventListener('submit', data => {
-    debugger
+    
     data.preventDefault();
     if (questionId.value && answerId.value) {
-        let cardArray = localStorage.getItem('cards') || [];
+        let cardArray = JSON.parse(localStorage.getItem('cards')) || [];
         cardArray.push({ question: questionId.value, answer: answerId.value });
-        localStorage.setItem('cards', cardArray);
+        localStorage.setItem('cards', JSON.stringify(cardArray));
 
         //close modal
         addCardModal.classList.remove('open');
         addCardModalContainer.classList.remove('open');
         alert('Saved');
+        loadCards();
     }
 })
 
-setTimeout(() => {
-    card.classList.add('slide-left');
+function loadCards() {
+    
+    let cardArray = JSON.parse(localStorage.getItem('cards')) || [];
+    let cardString = document.createElement("div");
+    
+    
+    if (cardArray.length) {
+        cardArray.forEach((cardData, index) => {
+            
+        cardString.innerHTML += `<div class="card">
+            <h4 class="flipCard"><i class="fas fa-redo-alt"></i> Flip</h4>
+            <div class="card-content" id=card"${index}">
+                ${cardData.question}
+            </div>
+        </div>`
+        })
+        
+    }
+    else{
+        cardString.innerHTML = `<div class="card">
+        <h4 class="flipCard"><i class="fas fa-redo-alt"></i> Flip</h4>
+        <div class="card-content">
+            Add a card
+        </div>
+    </div>`
+    }
+    cardContainer.appendChild(cardString);
+    const cardEls = cardContainer.querySelectorAll('.card');
+    cardEls.forEach(card => {
+        card.addEventListener('click', e => {
+            card.classList.toggle('show-answer');
+            setTimeout(() => {
+                card.classList.toggle('show-answer');
+            }, 1000);
+        })
+    })
+}
 
-}, 2000);
+loadCards();
+
+

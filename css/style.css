@@ -47,6 +47,7 @@
     background-color: white;
     box-shadow: -2px -2px 5px white, 3px 3px 5px #3333;
     transition: transform 0.8s 0s, opacity 0.3s 0.1s;
+    flex-shrink: 0;
 }
 .flipCard{
     position: absolute;
@@ -152,4 +153,12 @@
     background-color: skyblue;
     color: white;
     border: 1px solid skyblue;
+}
+#cardContainer div{
+    display: flex;
+    overflow: hidden;
+}
+.card.show-answer{
+    transform: rotateX(90deg);
+    /* transform: rotateX(0deg); */
 }
